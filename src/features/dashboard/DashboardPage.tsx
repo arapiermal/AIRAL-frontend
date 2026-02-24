@@ -55,9 +55,35 @@ export const DashboardPage = () => {
 
   return <div className='space-y-4'>
     <div className='grid gap-3 md:grid-cols-4'>
-      <Card><p className='text-xs text-muted-foreground'>City</p><Select value={cityId} onValueChange={setCityId}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{cities.data!.map((city: City) => <SelectItem key={city.id} value={city.id}>{city.name}</SelectItem>)}</SelectContent></Select></Card>
+      <Card>
+        <p className='text-xs text-muted-foreground'>City</p>
+        <Select value={cityId} onValueChange={setCityId}>
+          <SelectTrigger>
+            <SelectValue placeholder='Select city' />
+          </SelectTrigger>
+          <SelectContent>
+            {cities.data!.map((city: City) => (
+              <SelectItem key={city.id} value={city.id}>
+                {city.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Card>
       <Card><p className='text-xs text-muted-foreground'>Date Range</p><div className='mt-2 flex gap-2'>{presets.map((preset) => <button key={preset} onClick={() => setRangePreset(preset)} className='rounded border px-2 py-1 text-xs'>{preset}</button>)}</div></Card>
-      <Card><p className='text-xs text-muted-foreground'>Forecast Horizon</p><Select value={String(horizon)} onValueChange={(v: string) => setHorizon(Number(v))}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value='60'>1h</SelectItem><SelectItem value='180'>3h</SelectItem><SelectItem value='1440'>24h</SelectItem></SelectContent></Select></Card>
+      <Card>
+        <p className='text-xs text-muted-foreground'>Forecast Horizon</p>
+        <Select value={String(horizon)} onValueChange={(v: string) => setHorizon(Number(v))}>
+          <SelectTrigger>
+            <SelectValue placeholder='Select horizon' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value='60'>1h</SelectItem>
+            <SelectItem value='180'>3h</SelectItem>
+            <SelectItem value='1440'>24h</SelectItem>
+          </SelectContent>
+        </Select>
+      </Card>
       <Card><p className='text-xs text-muted-foreground'>Live Status</p><p className='text-sm'>Polling every 30s</p><p className='text-xs text-muted-foreground'>Last update: {new Date().toLocaleTimeString()}</p></Card>
     </div>
 
