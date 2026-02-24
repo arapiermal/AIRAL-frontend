@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       "@radix-ui/react-select":
-        specifier: "^2.1.1"
-        version: "2.1.1"
+        specifier: "2.2.6"
+        version: "2.2.6"
       "@radix-ui/react-slot":
         specifier: "^1.1.0"
         version: "1.1.0"
       "@tanstack/react-query":
-        specifier: "^4.36.1"
-        version: "4.36.1"
+        specifier: "5.90.21"
+        version: "5.90.21"
       "class-variance-authority":
         specifier: "^0.7.0"
         version: "0.7.0"
@@ -36,11 +36,11 @@ importers:
         specifier: "^0.468.0"
         version: "0.468.0"
       "react":
-        specifier: "^18.3.1"
-        version: "18.3.1"
+        specifier: "18.2.0"
+        version: "18.2.0"
       "react-dom":
-        specifier: "^18.3.1"
-        version: "18.3.1"
+        specifier: "18.2.0"
+        version: "18.2.0"
       "react-router-dom":
         specifier: "^6.28.0"
         version: "6.28.0"
@@ -58,11 +58,11 @@ importers:
         specifier: "^22.9.0"
         version: "22.9.0"
       "@types/react":
-        specifier: "^18.3.12"
-        version: "18.3.12"
+        specifier: "18.3.18"
+        version: "18.3.18"
       "@types/react-dom":
-        specifier: "^18.3.1"
-        version: "18.3.1"
+        specifier: "18.3.5"
+        version: "18.3.5"
       "@typescript-eslint/eslint-plugin":
         specifier: "^8.14.0"
         version: "8.14.0"
@@ -100,8 +100,8 @@ importers:
         specifier: "^3.4.15"
         version: "3.4.15"
       "typescript":
-        specifier: "^5.6.3"
-        version: "5.6.3"
+        specifier: "^5.5.0"
+        version: "5.9.2"
       "vite":
         specifier: "^5.4.11"
         version: "5.4.11"
@@ -111,16 +111,16 @@ importers:
 
 packages:
 
-  "@radix-ui/react-select@2.1.1":
+  "@radix-ui/react-select@2.2.6":
     resolution: {}
 
   "@radix-ui/react-slot@1.1.0":
     resolution: {}
 
-  "@tanstack/query-core@4.36.1":
+  "@tanstack/query-core@5.90.20":
     resolution: {}
 
-  "@tanstack/react-query@4.36.1":
+  "@tanstack/react-query@5.90.21":
     resolution: {}
 
   "@testing-library/jest-dom@6.6.3":
@@ -129,10 +129,10 @@ packages:
   "@types/node@22.9.0":
     resolution: {}
 
-  "@types/react@18.3.12":
+  "@types/react@18.3.18":
     resolution: {}
 
-  "@types/react-dom@18.3.1":
+  "@types/react-dom@18.3.5":
     resolution: {}
 
   "@typescript-eslint/eslint-plugin@8.14.0":
@@ -186,10 +186,10 @@ packages:
   "prettier@3.3.3":
     resolution: {}
 
-  "react@18.3.1":
+  "react@18.2.0":
     resolution: {}
 
-  "react-dom@18.3.1":
+  "react-dom@18.2.0":
     resolution: {}
 
   "react-router-dom@6.28.0":
@@ -201,7 +201,7 @@ packages:
   "tailwindcss@3.4.15":
     resolution: {}
 
-  "typescript@5.6.3":
+  "typescript@5.9.2":
     resolution: {}
 
   "vite@5.4.11":
@@ -215,14 +215,14 @@ packages:
 
 snapshots:
 
-  "@radix-ui/react-select@2.1.1": {}
+  "@radix-ui/react-select@2.2.6": {}
   "@radix-ui/react-slot@1.1.0": {}
-  "@tanstack/query-core@4.36.1": {}
-  "@tanstack/react-query@4.36.1": {}
+  "@tanstack/query-core@5.90.20": {}
+  "@tanstack/react-query@5.90.21": {}
   "@testing-library/jest-dom@6.6.3": {}
   "@types/node@22.9.0": {}
-  "@types/react@18.3.12": {}
-  "@types/react-dom@18.3.1": {}
+  "@types/react@18.3.18": {}
+  "@types/react-dom@18.3.5": {}
   "@typescript-eslint/eslint-plugin@8.14.0": {}
   "@typescript-eslint/parser@8.14.0": {}
   "@vitejs/plugin-react@4.3.3": {}
@@ -240,12 +240,12 @@ snapshots:
   "lucide-react@0.468.0": {}
   "postcss@8.4.49": {}
   "prettier@3.3.3": {}
-  "react@18.3.1": {}
-  "react-dom@18.3.1": {}
+  "react@18.2.0": {}
+  "react-dom@18.2.0": {}
   "react-router-dom@6.28.0": {}
   "tailwind-merge@2.5.5": {}
   "tailwindcss@3.4.15": {}
-  "typescript@5.6.3": {}
+  "typescript@5.9.2": {}
   "vite@5.4.11": {}
   "vitest@2.1.5": {}
   "zod@3.23.8": {}
