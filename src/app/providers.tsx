@@ -1,5 +1,4 @@
-import { QueryClient } from '@tanstack/query-core';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren, createContext, useContext, useMemo, useState } from 'react';
 import { DatePreset, resolvePresetRange } from '@/shared/utils/date';
 
