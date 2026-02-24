@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { TimeSeriesChart } from '@/shared/components/TimeSeriesChart';
 import { MapPanel } from '@/shared/components/MapPanel';
 import { computeAQI } from '@/shared/utils/aqi';
+import type { City, ObservationPoint, PredictionPoint } from '@/shared/domain/types';
 
 const presets = ['24h', '72h', '7d'] as const;
 
@@ -19,20 +20,31 @@ export const DashboardPage = () => {
   const predictions = usePredictionsQuery(cityId, range.from, range.to, ['pm25', 'pm10'], horizon);
   const metricDefs = useMetricsQuery();
 
-  const latestPm25 = observations.data?.filter((d) => d.metric === 'pm25').at(-1)?.value;
-  const latestPm10 = observations.data?.filter((d) => d.metric === 'pm10').at(-1)?.value;
+  const latestPm25 = observations.data?.filter((d: ObservationPoint) => d.metric === 'pm25').at(-1)?.value;
+  const latestPm10 = observations.data?.filter((d: ObservationPoint) => d.metric === 'pm10').at(-1)?.value;
 
   const mainSeries = useMemo(() => {
     const obs = observations.data ?? [];
     const pred = predictions.data ?? [];
     return [
-      { name: 'Observed PM2.5', data: obs.filter((x) => x.metric === 'pm25').map((x) => [x.timestamp, x.value] as [string, number]) },
+      {
+        name: 'Observed PM2.5',
+        data: obs
+          .filter((x: ObservationPoint) => x.metric === 'pm25')
+          .map((x: ObservationPoint) => [x.timestamp, x.value] as [string, number])
+      },
       {
         name: 'Predicted PM2.5',
-        data: pred.filter((x) => x.metric === 'pm25').map((x) => [x.timestamp, x.value] as [string, number]),
+        data: pred
+          .filter((x: PredictionPoint) => x.metric === 'pm25')
+          .map((x: PredictionPoint) => [x.timestamp, x.value] as [string, number]),
         areaBand: {
-          lower: pred.filter((x) => x.metric === 'pm25' && x.lower !== undefined).map((x) => [x.timestamp, x.lower!] as [string, number]),
-          upper: pred.filter((x) => x.metric === 'pm25' && x.upper !== undefined).map((x) => [x.timestamp, x.upper!] as [string, number])
+          lower: pred
+            .filter((x: PredictionPoint) => x.metric === 'pm25' && x.lower !== undefined)
+            .map((x: PredictionPoint) => [x.timestamp, x.lower!] as [string, number]),
+          upper: pred
+            .filter((x: PredictionPoint) => x.metric === 'pm25' && x.upper !== undefined)
+            .map((x: PredictionPoint) => [x.timestamp, x.upper!] as [string, number])
         }
       }
     ];
@@ -43,9 +55,9 @@ export const DashboardPage = () => {
 
   return <div className='space-y-4'>
     <div className='grid gap-3 md:grid-cols-4'>
-      <Card><p className='text-xs text-muted-foreground'>City</p><Select value={cityId} onValueChange={setCityId}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{cities.data!.map((city) => <SelectItem key={city.id} value={city.id}>{city.name}</SelectItem>)}</SelectContent></Select></Card>
+      <Card><p className='text-xs text-muted-foreground'>City</p><Select value={cityId} onValueChange={setCityId}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{cities.data!.map((city: City) => <SelectItem key={city.id} value={city.id}>{city.name}</SelectItem>)}</SelectContent></Select></Card>
       <Card><p className='text-xs text-muted-foreground'>Date Range</p><div className='mt-2 flex gap-2'>{presets.map((preset) => <button key={preset} onClick={() => setRangePreset(preset)} className='rounded border px-2 py-1 text-xs'>{preset}</button>)}</div></Card>
-      <Card><p className='text-xs text-muted-foreground'>Forecast Horizon</p><Select value={String(horizon)} onValueChange={(v) => setHorizon(Number(v))}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value='60'>1h</SelectItem><SelectItem value='180'>3h</SelectItem><SelectItem value='1440'>24h</SelectItem></SelectContent></Select></Card>
+      <Card><p className='text-xs text-muted-foreground'>Forecast Horizon</p><Select value={String(horizon)} onValueChange={(v: string) => setHorizon(Number(v))}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value='60'>1h</SelectItem><SelectItem value='180'>3h</SelectItem><SelectItem value='1440'>24h</SelectItem></SelectContent></Select></Card>
       <Card><p className='text-xs text-muted-foreground'>Live Status</p><p className='text-sm'>Polling every 30s</p><p className='text-xs text-muted-foreground'>Last update: {new Date().toLocaleTimeString()}</p></Card>
     </div>
 
