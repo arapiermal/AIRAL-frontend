@@ -5,9 +5,9 @@ React + Vite + TypeScript dashboard for air quality monitoring and prediction.
 ## Run
 
 ```bash
-pnpm install
-pnpm dev
-pnpm test
+npm install
+npm run dev
+npm test
 ```
 
 ## Extending
@@ -19,7 +19,7 @@ pnpm test
 
 ## Deploy (Netlify)
 
-- Commit `pnpm-lock.yaml` so Netlify can run deterministic installs with pnpm.
-- Build command: `pnpm install --frozen-lockfile && pnpm build`
+- Commit `package-lock.json` so Netlify can run deterministic installs with npm.
+- Build command: `npm ci && npm run build`
 - Publish directory: `dist`
 - Configure environment variables in Netlify as needed: `VITE_MOCK`, `VITE_API_BASE_URL`, `VITE_WS_URL`
